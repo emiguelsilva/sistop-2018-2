@@ -1,0 +1,25 @@
+Sistema de archivos distribuidos.  
+
+Lustre.
+
+Fue creado y financiado por el departamento de Estados Unidos de la oficina de la energía de la ciencia y de la administración nacional de seguridad nuclear.
+
+Es un sistema de archivos de clúster distribuido de alto rendimiento que redefine el rendimiento y escalabilidad para entornos informáticos complejos y grandes. Lo que lo hace tan viable son sus mutiles características que ofrece como: alta disponibilidad, seguridad, herramienta de recuperación de desastres, arquitectura basada en objetos, redes heterogéneas de alto rendimiento y es de código abierto. Algo curioso es que su nombre proviene de las palabras Linux y Clústers.
+
+Lustre proporciona un sistema de archivos para clustres de decenas de miles de nodos con petabytes de capacidad de almacenamiento. Cada archivo almacenado es considerado como un objeto.
+
+A cada cliente se le presenta una semántica POSIX (Portable Operating System Interface Unix), así como un acceso concurrente de lectura y escritura para los objetos compartidos. Lustre tiene cuatro unidades funcionales. Meta data server (MDS) para almacenar los metadatos; un Object storage target (OST) para guardar los datos reales; un Object storage server (OSS) para manejar los OSTs; cliente(s) para acceder y utilizar los datos. Lustre no administra directamente los OSTs, y delega esta responsabilidad en los OSSs para asegurar la escalabilidad para grandes clusters y supercomputadores. 
+
+Liblustre es una biblioteca de nivel de usuario que permite a los procesadores montar y utilizar el sistema de archivos Lustre como un cliente, sorteando la redirección hacia el nodo de servicio. Utilizando liblustre, los procesadores pueden acceder al sistema de archivos Lustre, incluso si el nodo de servicio en el que se lanzó el trabajo no es un cliente Lustre.
+
+Obviamente los sistemas operativos que soportan Lustre están basados en Unix/Linux. Para alguna otro sistema en donde se pueda implementar, según la información que encontré no existe aun, y digo aun porque creo que gracias a los avances significativos y que son viablemente aplicables, en algunos años pienso que se extenderá a nuevos sistemas operativos
+
+Herramienta de recuperación ante desastres: el sistema de archivos lustre proporciona una comprobación del sistema de archivos distribuido en línea (LFSCK) que puede restablecer la consistencia entre los componentes del almacenamiento de información en caso de un error importante del sistema de archivos. Un sistema de archivos lustre puede funcionar incluso en presencia de inconsistencias en el sistema de archivos, y LFSCK puede ejecutarse mientras el sistema de archivos está en uso, por lo que no se requiere que LFSCK complete antes de devolver el sistema de archivos a producción.
+
+Este sistema me llamo la atención por la arquitectura de la supercomputadora Miztli de  la UNAM.
+
+“El sistema de almacenamiento principal del equipo Miztli es distribuido y está basado en las tecnologías SFA12K de Data Direct Networks y LUSTRE, del consorcio OpenSFS.
+El esquema general del sistema de archivos LUSTRE consiste en un nodo de control, llamado MDS, y varios nodos de almacenamiento, denominados OSSs. Las operaciones de lectura/escritura de archivos se llevan a cabo de forma paralela, utilizando simultáneamente los dispositivos de almacenamiento de cada OSS.
+El dispositivo DDN SFA12K proporciona ocho dispositivos de almacenamiento a cada OSS, que se componen de 10 discos SAS/SATA y  son capaces de contener hasta 7 Terabytes. El sistema de almacenamiento contiene un total de 590 discos.”
+
+http://www.super.unam.mx/index.php/content-layouts?start=2
